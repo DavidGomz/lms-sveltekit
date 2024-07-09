@@ -1,7 +1,8 @@
-import { superValidate } from "sveltekit-superforms";
+import { message, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import { loginSchema } from "$lib/schema";
-import { fail } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
+import type { ClientResponseError } from "pocketbase";
 
 export const load = (async () => {
     return {
@@ -22,7 +23,10 @@ export const actions = {
     try {
         await pb.collection('users').authWithPassword(form.data.email, form.data.password);
     } catch(e) {
-        const { status } = e as ClientResponseError 
+        const { status } = e as ClientResponseError
+        return message(form, { status, message: 'an error occured' })
     }
+
+    redirect(303, '/');
    } 
 }

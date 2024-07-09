@@ -48,7 +48,7 @@
             {#if $delayed}
                 <Loader2 class="size-6 animate-spin" />
             {:else}
-                Login
+                Register
             {/if}
         </Form.Button>
     </form>
