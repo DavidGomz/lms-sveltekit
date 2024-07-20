@@ -4,13 +4,14 @@
 	import { loginSchema } from "$lib/schema.js";
 	import { superForm } from "sveltekit-superforms";
 	import { zodClient } from "sveltekit-superforms/adapters";
+    import Loader2 from 'lucide-svelte/icons/loader';
     
     export let data;
     const form = superForm(data.form, {
         validators: zodClient(loginSchema)
     });
     const { form: formData, enhance, delayed } = form;
-    import Loader2 from 'lucide-svelte/icons/loader';
+    
 </script>
 
 <div>
