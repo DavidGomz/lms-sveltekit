@@ -1,5 +1,9 @@
 <script>
+    import '@fontsource-variable/noto-sans'
 	import '../app.css';
+	
 </script>
 
-<slot></slot>
+<main class="h-screen">
+    <slot />
+</main>

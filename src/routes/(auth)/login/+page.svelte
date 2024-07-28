@@ -1,16 +1,16 @@
 <script lang="ts">
     import * as Form from "$lib/components/ui/form";
-    import { Input } from "$lib/components/ui/input";
-	import { loginSchema } from "$lib/schema.js";
+    import Input from "$lib/components/ui/input/input.svelte";
+	import { loginSchema } from "$lib/schema";
 	import { superForm } from "sveltekit-superforms";
 	import { zodClient } from "sveltekit-superforms/adapters";
+    import Loader2 from 'lucide-svelte/icons/loader';
     
     export let data;
     const form = superForm(data.form, {
         validators: zodClient(loginSchema)
     });
     const { form: formData, enhance, delayed } = form;
-    import Loader2 from 'lucide-svelte/icons/loader';
 </script>
 
 <div>
@@ -45,11 +45,7 @@
         </div>
 
         <Form.Button variant="secondary" href="/register" class="w-full">
-            {#if $delayed}
-                <Loader2 class="size-6 animate-spin" />
-            {:else}
-                Register
-            {/if}
+            Register
         </Form.Button>
     </form>
 </div>

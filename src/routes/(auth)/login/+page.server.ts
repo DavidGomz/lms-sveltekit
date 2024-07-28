@@ -4,15 +4,15 @@ import { loginSchema } from "$lib/schema";
 import { fail, redirect } from "@sveltejs/kit";
 import type { ClientResponseError } from "pocketbase";
 
-export const load = (async () => {
+export const load = async () => {
     return {
-        form: await superValidate(zod(loginSchema))
+        form: await superValidate(zod(loginSchema)),
     };
-});
+};
 
 export const actions = {
    default: async (event) => {
-    const { locals: {pb} } = event;
+    const { locals: { pb } } = event;
     const form = await superValidate(event, zod(loginSchema));
     if(!form.valid) {
         return fail(400, {
@@ -23,8 +23,9 @@ export const actions = {
     try {
         await pb.collection('users').authWithPassword(form.data.email, form.data.password);
     } catch(e) {
-        const { status } = e as ClientResponseError
-        return message(form, { status, message: 'an error occured' })
+        const { status } = e as ClientResponseError;
+
+        return message(form, { status, message: 'an error occured' });
     }
 
     redirect(303, '/');

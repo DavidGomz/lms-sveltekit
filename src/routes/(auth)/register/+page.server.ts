@@ -4,11 +4,11 @@ import { registerSchema } from "$lib/schema";
 import { fail, redirect } from "@sveltejs/kit";
 import type { ClientResponseError } from "pocketbase";
 
-export const load = (async () => {
+export const load = async () => {
     return {
         form: await superValidate(zod(registerSchema))
     };
-});
+};
 
 export const actions = {
    default: async (event) => {
