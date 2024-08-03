@@ -7,7 +7,6 @@
     <Sheet.Trigger class='md:hidden pr-4 hover:opacity-75 transition'><Menu /></Sheet.Trigger>
     <Sheet.Content class="md:hidden p-0 bg-background" side="left">
         <!-- sidebar -->
-        
     </Sheet.Content>
 </Sheet.Root>
 

@@ -11,7 +11,6 @@
         validators: zodClient(loginSchema)
     });
     const { form: formData, enhance, delayed } = form;
-    
 </script>
 
 <div>

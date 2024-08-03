@@ -22,7 +22,6 @@ export const actions = {
     
     try {
         await pb.collection('users').authWithPassword(form.data.email, form.data.password);
-        console.log("entrando aqui")
     } catch(e) {
         const { status } = e as ClientResponseError;
 
