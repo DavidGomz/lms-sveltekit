@@ -7,9 +7,7 @@ import { zod } from 'sveltekit-superforms/adapters';
 export const load = async () => {
     return {
         form: await superValidate(zod(titleSchema)),
-        onUpdated: () => {
-            console.log('updated');
-        }
+        
     };
 };
 

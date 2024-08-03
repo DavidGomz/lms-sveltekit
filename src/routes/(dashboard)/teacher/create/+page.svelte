@@ -6,11 +6,20 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
     import Loader2 from 'lucide-svelte/icons/loader';
+	// import { Toaster } from "$lib/components/ui/sonner/index.js";
+    import { toast } from 'svelte-sonner';
 
     export let data;
 
     const form = superForm(data.form, {
-        validators: zodClient(titleSchema)
+        validators: zodClient(titleSchema),
+        onUpdate({form}) {
+            if(form.message) {
+                if(!form.valid) {
+                    toast.error(form.message);
+                }
+            }
+        }
     })
     const { form: formData, enhance, delayed , submitting } = form;
 </script>
