@@ -5,7 +5,7 @@
 	import { courseSchema, titleSchema } from '$lib/schema.js';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-    import Loader2 from 'lucide-svelte/icons/loader';
+    import Loader from 'lucide-svelte/icons/loader';
 	// import { Toaster } from "$lib/components/ui/sonner/index.js";
     import { toast } from 'svelte-sonner';
 
@@ -45,7 +45,7 @@
                 </Button>
                 <Form.Button>
                     {#if $delayed}
-                        <Loader2 class="size-6 animate-spin" />
+                        <Loader class="size-6 animate-spin" />
                     {:else}
                         Continue
                     {/if}

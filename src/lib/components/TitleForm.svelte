@@ -7,7 +7,7 @@
 	import { zodClient } from "sveltekit-superforms/adapters";
     import * as Form from "$lib/components/ui/form";
     import Input from "$lib/components/ui/input/input.svelte";
-    import Loader2 from 'lucide-svelte/icons/loader';
+    import Loader from 'lucide-svelte/icons/loader';
 	import { toast } from "svelte-sonner";
     type TitleSchema = typeof titleSchema
     export let data: SuperValidated<Infer<TitleSchema>>
@@ -62,7 +62,7 @@
             <div class="flex items-center gap-x-2">
                 <Form.Button>
                     {#if $delayed}
-                        <Loader2 class="size-6 animate-spin" />
+                        <Loader class="size-6 animate-spin" />
                     {:else}
                         save
                     {/if}

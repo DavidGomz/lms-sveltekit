@@ -1,8 +1,8 @@
 <script lang="ts">
     import DescriptionForm from '$lib/components/DescriptionForm.svelte';
-import IconBadge from '$lib/components/IconBadge.svelte';
+    import IconBadge from '$lib/components/IconBadge.svelte';
 	import TitleForm from '$lib/components/TitleForm.svelte';
-import * as Alert from '$lib/components/ui/alert';
+    import * as Alert from '$lib/components/ui/alert';
     import { AlertTriangle, CircleDollarSign, File, LayoutDashboard, ListChecks } from 'lucide-svelte'
 
     export let data;

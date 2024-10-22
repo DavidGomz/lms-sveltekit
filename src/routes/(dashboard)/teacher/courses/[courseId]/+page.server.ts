@@ -1,4 +1,4 @@
-import { titleSchema } from '$lib/schema.js';
+import { descriptionSchema, titleSchema } from '$lib/schema.js';
 import type { Category, Course } from '$lib/types.js';
 import { error, fail, redirect } from '@sveltejs/kit';
 import type { ClientResponseError } from 'pocketbase';
@@ -46,11 +46,13 @@ export const load = async ({params, locals: {user, pb}}) => {
 
     const [course, categories] = await Promise.all([getCourse(), getCategories()])
     const titleForm = await superValidate(course, zod(titleSchema))
+    const descriptionForm = await superValidate(course, zod(descriptionSchema))
 
     return {
         course,
         categories,
-        titleForm
+        titleForm,
+        descriptionForm
     };
 };
 
@@ -69,7 +71,26 @@ export const actions = {
             await pb.collection('courses').update(courseId, form.data)
             return message(form, 'successfully updated course title!')
         } catch (e) {
-            
+            const { status } = e as ClientResponseError
+            return message(form, { status, message: 'an error occured' })
+        }
+    },
+    updateDescription: async (event) => {
+        const { locals: {pb}, params } = event
+        const { courseId } = params
+        const form = await superValidate(event, zod(descriptionSchema))
+        if(!form.valid) {
+            return fail(400, {
+                form
+            })
+        }
+
+        try {
+            await pb.collection('courses').update(courseId, form.data)
+            return message(form, 'successfully updated course description!')
+        } catch (e) {
+            const { status } = e as ClientResponseError
+            return message(form, { status, message: 'an error occured' })
         }
     }
 }

@@ -4,7 +4,7 @@
 	import { registerSchema } from "$lib/schema.js";
 	import { superForm } from "sveltekit-superforms";
 	import { zodClient } from "sveltekit-superforms/adapters";
-    import Loader2 from 'lucide-svelte/icons/loader';
+    import Loader from 'lucide-svelte/icons/loader';
     
     export let data;
     const form = superForm(data.form, {
@@ -59,7 +59,7 @@
 
         <Form.Button class="w-full">
             {#if $delayed}
-                <Loader2 class="size-6 animate-spin" />
+                <Loader class="size-6 animate-spin" />
             {:else}
                 Register
             {/if}
@@ -73,7 +73,7 @@
 
         <Form.Button variant="secondary" href="/login" class="w-full">
             {#if $delayed}
-                <Loader2 class="size-6 animate-spin" />
+                <Loader class="size-6 animate-spin" />
             {:else}
                 Login
             {/if}
