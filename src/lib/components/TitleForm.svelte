@@ -1,19 +1,20 @@
 <script lang="ts">
     import { page } from "$app/stores";
 	import { Pencil } from "lucide-svelte";
+    import Loader from 'lucide-svelte/icons/loader';
 	import Button from "./ui/button/button.svelte";
 	import { titleSchema } from "$lib/schema";
 	import { superForm, type Infer, type SuperValidated } from "sveltekit-superforms";
 	import { zodClient } from "sveltekit-superforms/adapters";
     import * as Form from "$lib/components/ui/form";
     import Input from "$lib/components/ui/input/input.svelte";
-    import Loader from 'lucide-svelte/icons/loader';
 	import { toast } from "svelte-sonner";
+
     type TitleSchema = typeof titleSchema
     export let data: SuperValidated<Infer<TitleSchema>>
     const form = superForm(data, {
         validators: zodClient(titleSchema),
-        resetForm: false,
+        // resetForm: false,
         onUpdated({ form }) {
             if(form.message) {
                 if(!form.valid) {

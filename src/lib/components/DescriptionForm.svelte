@@ -53,7 +53,7 @@
     </div>
     {#if !isEditing}
         <p class={cn("text-sm mt-2", {
-            
+            'text-muted-foreground': !data.data.description
         })}>{data.data.description || "no description"}</p>
         <!-- <p class="text-sm mt-2 break-all">
             // add initial or default description

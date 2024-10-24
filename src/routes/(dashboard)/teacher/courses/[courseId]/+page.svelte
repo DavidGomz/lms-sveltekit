@@ -1,6 +1,7 @@
 <script lang="ts">
     import DescriptionForm from '$lib/components/DescriptionForm.svelte';
     import IconBadge from '$lib/components/IconBadge.svelte';
+	import ImageForm from '$lib/components/ImageForm.svelte';
 	import TitleForm from '$lib/components/TitleForm.svelte';
     import * as Alert from '$lib/components/ui/alert';
     import { AlertTriangle, CircleDollarSign, File, LayoutDashboard, ListChecks } from 'lucide-svelte'
@@ -56,6 +57,7 @@
             <!-- DescriptionForm -->
             <DescriptionForm data={data.descriptionForm} />
             <!-- ImageForm -->
+            <ImageForm />
             <!-- CategoryForm -->
         </div>
         <div class="space-y-6">
